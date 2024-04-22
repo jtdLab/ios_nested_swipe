@@ -47,16 +47,24 @@ class PageAA extends StatelessWidget {
       appBar: AppBar(
         title: Text(toString()),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text(
-            'From here i want to swipe back and pop ShellA holding only PageAA and see PageA again\n'
-            '\n'
-            'Current Root Stack: ${context.router.root.stack.map((e) => e.name)}\n'
-            'Current ShellA Stack: ${context.router.stack.map((e) => e.name)}',
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Text(
+              'From here i want to swipe back and pop ShellA holding only PageAA and see PageA again\n'
+              '\n'
+              'Current Root Stack: ${context.router.root.stack.map((e) => e.name)}\n'
+              'Current ShellA Stack: ${context.router.stack.map((e) => e.name)}',
+            ),
           ),
-        ),
+          FilledButton(
+            onPressed: () => context.maybePop(),
+            child: const Text('Pop to Page A'),
+          ),
+          const Text('Doing it via context.maybePop works'),
+        ],
       ),
     );
   }
