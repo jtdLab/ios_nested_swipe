@@ -19,6 +19,10 @@ class Router extends _$Router {
               path: '',
               page: PageAARoute.page,
             ),
+            AutoRoute(
+              path: 'b',
+              page: PageABRoute.page,
+            ),
           ],
         ),
       ];

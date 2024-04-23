@@ -27,6 +27,12 @@ abstract class _$Router extends RootStackRouter {
         child: const PageAA(),
       );
     },
+    PageABRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PageAB(),
+      );
+    },
     ShellARoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -60,6 +66,20 @@ class PageAARoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'PageAARoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PageAB]
+class PageABRoute extends PageRouteInfo<void> {
+  const PageABRoute({List<PageRouteInfo>? children})
+      : super(
+          PageABRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PageABRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

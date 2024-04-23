@@ -29,7 +29,7 @@ class PageA extends StatelessWidget {
       ),
       body: Center(
         child: FilledButton(
-          onPressed: () => context.navigateTo(const PageAARoute()),
+          onPressed: () => context.pushRoute(const PageAARoute()),
           child: const Text('Push Page AA'),
         ),
       ),
@@ -50,10 +50,36 @@ class PageAA extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          FilledButton(
+            onPressed: () => context.pushRoute(const PageABRoute()),
+            child: const Text('Push Page AB'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+@RoutePage()
+class PageAB extends StatelessWidget {
+  const PageAB({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(toString()),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
           Padding(
             padding: const EdgeInsets.all(20),
             child: Text(
-              'From here i want to swipe back and pop ShellA holding only PageAA and see PageA again\n'
+              'From here i want to swipe back and pop PageAB to show PageAA again\n'
+              '\n'
+              'But the back swipe pops the whole shell no matter it has multiple routes on the stack'
+              'Is it possible to allow configuring that behaviour?'
               '\n'
               'Current Root Stack: ${context.router.root.stack.map((e) => e.name)}\n'
               'Current ShellA Stack: ${context.router.stack.map((e) => e.name)}',
@@ -61,9 +87,8 @@ class PageAA extends StatelessWidget {
           ),
           FilledButton(
             onPressed: () => context.maybePop(),
-            child: const Text('Pop to Page A'),
+            child: const Text('Pop PageAB'),
           ),
-          const Text('Doing it via context.maybePop works'),
         ],
       ),
     );
